@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  icon: {
+    "fontawesome-svg-core": {
+      license: "free",
+    },
+  },
   theme: {
     container: {
       center: true,
