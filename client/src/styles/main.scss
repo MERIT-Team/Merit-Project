@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 685px;
+  width: 568px;
+
+  p {
+    padding: 15px 24px;
+  }
+
+  button {
+    margin: 15px 15px;
+  }
+
+  span {
+    font-size: 12px;
+  }
+}
+
+.main {
+  padding: 24px;
+}
+
+.trans:hover {
+  transform: translateY(-10px) scale(1);
+  font-size: 8px;
+}
+
+.trans-top {
+  transform: translateY(-10px) scale(1);
+  font-size: 8px;
+}
+
+.btn {
+  margin: 10px 0;
+  padding: 10px;
+  color: white;
+}
+
+.btn-bottom {
+  margin: 0;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.line {
+  padding-top: 12px;
+}
+
+.bottom {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
