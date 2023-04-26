@@ -15,19 +15,26 @@ export class HotelsService {
     return hotelsCard;
   }
 
-  findAll() {
-    return `This action returns all hotels`;
+  async findAll() {
+    const result = await this.hotelCardModel.find();
+    return result;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} hotel`;
+  async findOne(id: string) {
+    const result = await this.hotelCardModel.findById(id);
+    return result;
   }
 
-  update(id: number, updateHotelDto: UpdateHotelDto) {
-    return `This action updates a #${id} hotel`;
+  async update(id: string, updateHotelDto: UpdateHotelDto) {
+    const updatedHotel = await this.hotelCardModel.findOneAndUpdate(
+      { _idHotel: id },
+      updateHotelDto,
+    );
+    return updatedHotel;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} hotel`;
+  async remove(id: string) {
+    const result = await this.hotelCardModel.findByIdAndDelete(id);
+    return result;
   }
 }
