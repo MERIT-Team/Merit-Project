@@ -3,9 +3,6 @@ import { nanoid } from 'nanoid';
 
 @Schema({ timestamps: true })
 export class Hotel {
-  @Prop({ default: () => nanoid(), type: String })
-  _idHotel: string;
-
   @Prop({ type: String, required: true })
   name: string;
 
