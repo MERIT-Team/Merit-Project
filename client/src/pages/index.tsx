@@ -1,5 +1,9 @@
-import Login from "./Login";
+import User from "@/components/User";
 
 export default function index() {
-  return <Login />;
+  return (
+    <>
+      <User />
+    </>
+  );
 }

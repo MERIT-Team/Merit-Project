@@ -20,10 +20,10 @@ html {
 }
 
 .main {
-  padding: 24px;
+  padding: 24px 24px 10px 24px;
 }
 
-.trans:hover {
+.trans:focus {
   transform: translateY(-10px) scale(1);
   font-size: 8px;
 }
@@ -37,12 +37,12 @@ html {
   margin: 10px 0;
   padding: 10px;
   color: white;
+  background-color: #e98074;
 }
 
 .btn-bottom {
   margin: 0;
   padding: 10px;
-  margin: 0 10px;
 }
 
 .line {
