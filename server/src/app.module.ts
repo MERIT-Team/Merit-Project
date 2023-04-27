@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TodosModule } from './todos/todos.module';
-import { UsersModule } from './users/users.module';
-import { TodoCategoriesModule } from './todo-categories/todo-categories.module';
+import * as dotenv from 'dotenv';
+import { DialCodeModule } from './dial_code/dial_code.module';
 
+dotenv.config();
+console.log(process.env.MONGO_URL);
 @Module({
-  imports: [TodosModule, UsersModule, TodoCategoriesModule],
+  imports: [MongooseModule.forRoot(process.env.MONGO_URL), DialCodeModule],
   controllers: [AppController],
   providers: [AppService],
 })
