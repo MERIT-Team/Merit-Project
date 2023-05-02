@@ -20,13 +20,20 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/class-validator": "^0.13.4",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/jwt": "^10.0.3",
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/platform-express": "^9.0.0",
+    "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
+    "env": "^0.0.2",
+    "messagebird": "^4.0.1",
     "mongoose": "^7.0.5",
+    "nanoid": "^4.0.2",
+    "nodemailer": "^6.9.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },
