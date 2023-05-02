@@ -179,7 +179,7 @@ export default function Example() {
                             <input
                               type="text"
                               placeholder="Phone number"
-                              className=" bg-gray-50 ms-2 ring-1 ring-white"
+                              className=" bg-gray-50 ms-2"
                             />
                           </div>
                         </label>
