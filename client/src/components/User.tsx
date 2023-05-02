@@ -1,12 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { BsApple } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { Dialog } from "@headlessui/react";
+import axios from "axios";
 
 export default function Example() {
   const [isOpen, setIsOpen] = useState(false);
+  const [dialCodes, setDialCodes] = useState<any[]>([]);
+  const [dialcode, setDialcode] = useState(" ");
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  useEffect(() => {
+    bla();
+  }, []);
+  const bla = async () => {
+    const response = await axios.get("http://localhost:7777/dial-code");
+    const data = await response.data;
+    setDialCodes(data);
+  };
 
   function closeModal() {
     setIsOpen(false);
@@ -136,17 +150,37 @@ export default function Example() {
                       <div className="input-trans">
                         <label
                           htmlFor="phoneInputNumber"
-                          className="block w-full p-3 pl-3 text-sm text-black border border-gray-400 rounded-t-lg bg-gray-50 focus:ring-blue-500 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black"
+                          className="block w-full p-3 pl-3 text-sm text-black border border-gray-400 rounded-t-lg bg-gray-50 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white"
                         >
-                          <div className="trans-top text-gray-400 ">
+                          <div className="trans-top text-gray-400">
                             Country/Region
+                          </div>
+                          <div className="text-gray-400 font-bold p-0 m-0">
+                            <select
+                              name=""
+                              id=""
+                              className="bg-gray-50 text-base focus:ring-0"
+                              value={dialcode}
+                              onChange={(e) => setDialcode(e.target.value)}
+                            >
+                              {dialCodes.map((d, idx) => (
+                                <option value={d.dial_code} key={idx}>
+                                  {d.name} ({d.dial_code})
+                                </option>
+                              ))}
+                            </select>
                           </div>
                         </label>
                       </div>
-                      <div className="input-trans">
-                        <label className="block w-full p-3 pl-3 text-sm text-black border border-gray-400 rounded-b-lg bg-gray-50 focus:ring-blue-500 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white dark:focus:ring-black dark:focus:border-black">
-                          <div className="trans text-gray-400 ">
-                            Phone number
+                      <div className="input-trans ">
+                        <label className="block w-full p-3 pl-3 text-sm text-black border border-gray-400 rounded-b-lg bg-gray-50 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white">
+                          <div className="trans text-gray-400 text-base">
+                            {dialcode}
+                            <input
+                              type="text"
+                              placeholder="Phone number"
+                              className=" bg-gray-50 ms-2 ring-1 ring-white"
+                            />
                           </div>
                         </label>
                       </div>
