@@ -1,9 +1,9 @@
-import User from "@/components/User";
+import NavbarIcon from "@/components/NavbarIcon";
 
 export default function index() {
   return (
     <>
-      <User />
+      <NavbarIcon />
     </>
   );
 }

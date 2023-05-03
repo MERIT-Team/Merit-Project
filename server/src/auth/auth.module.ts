@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from 'src/users/users.module';
 import { JwtModule } from '@nestjs/jwt';
-import env from 'env';
+import env from 'src/env';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Otp, OtpSchema } from './entities/otp.entity';
 

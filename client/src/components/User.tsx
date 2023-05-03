@@ -1,26 +1,14 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useState } from "react";
-import { AiOutlineFacebook } from "react-icons/ai";
-import { BsApple } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
-import { Dialog } from "@headlessui/react";
-import axios from "axios";
+import { Fragment, useState } from "react";
+// import { AiOutlineFacebook } from "react-icons/ai";
+// import { BsApple } from "react-icons/bs";
+// import { FcGoogle } from "react-icons/fc";
+// import { Dialog } from "@headlessui/react";
 
 export default function Example() {
   const [isOpen, setIsOpen] = useState(false);
-  const [dialCodes, setDialCodes] = useState<any[]>([]);
-  const [dialcode, setDialcode] = useState(" ");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  useEffect(() => {
-    bla();
-  }, []);
-  const bla = async () => {
-    const response = await axios.get("http://localhost:7777/dial-code");
-    const data = await response.data;
-    setDialCodes(data);
-  };
 
   function closeModal() {
     setIsOpen(false);
@@ -96,7 +84,7 @@ export default function Example() {
           </Menu.Items>
         </Transition>
       </Menu>
-      <>
+      {/* <>
         <Transition appear show={isOpen} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={closeModal}>
             <Transition.Child
@@ -123,7 +111,7 @@ export default function Example() {
                   leaveTo="opacity-0 scale-95"
                 >
                   <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl p-3 bg-white text-left align-middle shadow-xl transition-all">
-                    <button onClick={closeModal}>
+                    {/* <button onClick={closeModal}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -144,8 +132,8 @@ export default function Example() {
                       className="text-lg text-center font-bold leading-6 text-gray-900"
                     >
                       Log in or sign up
-                    </Dialog.Title>
-                    <div className="main">
+                    </Dialog.Title> */}
+      {/* <div className="main">
                       <h2 className="font-bold mb-4">Welcome to MERIT</h2>
                       <div className="input-trans">
                         <label
@@ -156,26 +144,13 @@ export default function Example() {
                             Country/Region
                           </div>
                           <div className="text-gray-400 font-bold p-0 m-0">
-                            <select
-                              name=""
-                              id=""
-                              className="bg-gray-50 text-base focus:ring-0"
-                              value={dialcode}
-                              onChange={(e) => setDialcode(e.target.value)}
-                            >
-                              {dialCodes.map((d, idx) => (
-                                <option value={d.dial_code} key={idx}>
-                                  {d.name} ({d.dial_code})
-                                </option>
-                              ))}
-                            </select>
+                            {" "}
                           </div>
                         </label>
                       </div>
                       <div className="input-trans ">
                         <label className="block w-full p-3 pl-3 text-sm text-black border border-gray-400 rounded-b-lg bg-gray-50 dark:border-gray-400 dark:placeholder-gray-400 dark:text-white">
                           <div className="trans text-gray-400 text-base">
-                            {dialcode}
                             <input
                               type="text"
                               placeholder="Phone number"
@@ -234,14 +209,14 @@ export default function Example() {
                           <div>{""}</div>
                         </div>
                       </button>
-                    </div>
-                  </Dialog.Panel>
-                </Transition.Child>
+                    </div> */}
+      {/* </Dialog.Panel> */}
+      {/* </Transition.Child>
               </div>
             </div>
           </Dialog>
         </Transition>
-      </>
+      </> *} */}
     </div>
   );
 }

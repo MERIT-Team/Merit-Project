@@ -23,6 +23,13 @@ export class AuthService {
     const user = await this.usersService.findOneByEmail(email);
     if (user)
       throw new HttpException('User already exists', HttpStatus.BAD_REQUEST);
+    if (signupDto.password !== signupDto.repassword)
+      throw new HttpException(
+        'Repeating password is not matching',
+        HttpStatus.BAD_REQUEST,
+      );
+    const password = bcrypt.hashSync(signupDto.password, 10);
+    return await this.usersService.create({ ...signupDto, password });
   }
 
   async signin(signinDto: SigninDto) {
