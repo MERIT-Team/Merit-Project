@@ -29,7 +29,7 @@ export default function MenuIcon() {
         <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
             <Menu.Item>
-              <Link href="/login">
+              <Link href="/signinModal">
                 <button
                   className="group flex w-full items-center rounded-md px-1 py-1 text-md"
                   onClick={openModal}
@@ -39,12 +39,14 @@ export default function MenuIcon() {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <button
-                className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                onClick={openModal}
-              >
-                Sign up
-              </button>
+              <Link href="/signupModal">
+                <button
+                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
+                  onClick={openModal}
+                >
+                  Sign up
+                </button>
+              </Link>
             </Menu.Item>
           </div>
           <div className="px-1 py-1">

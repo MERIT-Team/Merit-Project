@@ -6,6 +6,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 import { BsApple } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { Dialog } from "@headlessui/react";
+import Link from "next/link";
 
 export default function User() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,20 +59,24 @@ export default function User() {
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
-                <button
-                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openModal}
-                >
-                  Log in
-                </button>
+                <Link href="/signin">
+                  <button
+                    className="group flex w-full items-center rounded-md px-1 py-1 text-md"
+                    onClick={openModal}
+                  >
+                    Log in
+                  </button>
+                </Link>
               </Menu.Item>
               <Menu.Item>
-                <button
-                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openModal}
-                >
-                  Sign up
-                </button>
+                <Link href="/signup">
+                  <button
+                    className="group flex w-full items-center rounded-md px-1 py-1 text-md"
+                    onClick={openModal}
+                  >
+                    Sign up
+                  </button>
+                </Link>
               </Menu.Item>
             </div>
             <div className="px-1 py-1">

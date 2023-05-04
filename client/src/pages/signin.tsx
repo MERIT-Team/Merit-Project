@@ -6,6 +6,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 import { BsApple } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { Dialog } from "@headlessui/react";
+import Link from "next/link";
 
 export default function User() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,20 +59,24 @@ export default function User() {
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item>
-                <button
-                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openModal}
-                >
-                  Log in
-                </button>
+                <Link href="/signin">
+                  <button
+                    className="group flex w-full items-center rounded-md px-1 py-1 text-md"
+                    onClick={openModal}
+                  >
+                    Log in
+                  </button>
+                </Link>
               </Menu.Item>
               <Menu.Item>
-                <button
-                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openModal}
-                >
-                  Sign up
-                </button>
+                <Link href="/signup">
+                  <button
+                    className="group flex w-full items-center rounded-md px-1 py-1 text-md"
+                    onClick={openModal}
+                  >
+                    Sign up
+                  </button>
+                </Link>
               </Menu.Item>
             </div>
             <div className="px-1 py-1">
@@ -161,22 +166,6 @@ export default function User() {
                         name="password"
                         id="password"
                         placeholder="Password"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="confirm-password"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Confirm password
-                      </label>
-                      <input
-                        type="confirm-password"
-                        name="confirm-password"
-                        id="confirm-password"
-                        placeholder="Repassword"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required
                       />
