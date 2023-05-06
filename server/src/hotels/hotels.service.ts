@@ -4,10 +4,16 @@ import { CreateHotelDto } from './dto/create-hotel.dto';
 import { UpdateHotelDto } from './dto/update-hotel.dto';
 import { Model } from 'mongoose';
 import { Hotel } from './entities/hotel.entity';
+import { HotelComment } from 'src/hotel-comments/entities/hotel-comment.entity';
+import { UserRating } from 'src/user-rating/entities/user-rating.entity';
 
 @Injectable()
 export class HotelsService {
-  constructor(@InjectModel(Hotel.name) private hotelCardModel: Model<Hotel>) {}
+  constructor(
+    @InjectModel(Hotel.name) private hotelCardModel: Model<Hotel>,
+    @InjectModel(HotelComment.name) private hotelComment: Model<HotelComment>,
+    @InjectModel(UserRating.name) private userRating: Model<UserRating>,
+  ) {}
 
   async create(createHotelDto: CreateHotelDto) {
     console.log('createHotelDto', createHotelDto);
@@ -16,7 +22,9 @@ export class HotelsService {
   }
 
   async findAll() {
-    const result = await this.hotelCardModel.find();
+    const result = await this.hotelCardModel
+      .find()
+      .populate(['comments', 'UserRating']);
     return result;
   }
 

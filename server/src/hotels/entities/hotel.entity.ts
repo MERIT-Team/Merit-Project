@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { nanoid } from 'nanoid';
+import mongoose from 'mongoose';
 
 @Schema({ timestamps: true })
 export class Hotel {
@@ -24,8 +24,8 @@ export class Hotel {
     coordinates: number[]; //urtrag urgurug 2 orno
   };
 
-  @Prop({ type: Number })
-  userRating: number;
+  @Prop({ type: mongoose.Schema.Types.ObjectId })
+  UserRating: mongoose.Schema.Types.ObjectId;
 
   @Prop({ type: [String], required: true })
   images: string[];
@@ -35,8 +35,8 @@ export class Hotel {
     houseRules: string[];
   };
 
-  @Prop({ type: String })
-  comments: string;
+  @Prop({ type: mongoose.Schema.Types.ObjectId })
+  comments: mongoose.Schema.Types.ObjectId;
 }
 
 export const HotelSchema = SchemaFactory.createForClass(Hotel);

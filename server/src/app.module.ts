@@ -3,12 +3,21 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HotelsModule } from './hotels/hotels.module';
+import { HotelCommentsModule } from './hotel-comments/hotel-comments.module';
+import { UsersModule } from './users/users.module';
+import { UserRatingModule } from './user-rating/user-rating.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 @Module({
-  imports: [MongooseModule.forRoot(process.env.MONGO_URL), HotelsModule],
+  imports: [
+    MongooseModule.forRoot(process.env.MONGO_URL),
+    HotelsModule,
+    HotelCommentsModule,
+    UsersModule,
+    UserRatingModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

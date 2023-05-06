@@ -8,7 +8,6 @@ export class CreateHotelDto {
     address: string;
     coordinates: number[];
   };
-  userRating: number;
   images: string[];
   thingsToKnow: {
     houseRules: string[];
