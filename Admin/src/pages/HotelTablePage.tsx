@@ -17,7 +17,7 @@ export default function Document() {
   };
 
   const showCreateModal = () => {
-    setModalTitle("Hotel nemeh");
+    setModalTitle("Hotel Add");
     setModalContent(<HotelAdd afterSubmit={afterSubmit} />);
     setModalShow(true);
   };
