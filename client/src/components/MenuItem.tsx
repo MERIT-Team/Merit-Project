@@ -6,11 +6,7 @@ import Link from "next/link";
 export default function MenuIcon() {
   const [isOpen, setIsOpen] = useState(false);
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
+  function openMenu() {
     setIsOpen(true);
   }
 
@@ -32,7 +28,7 @@ export default function MenuIcon() {
               <Link href="/signinModal">
                 <button
                   className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openModal}
+                  onClick={openMenu}
                 >
                   Log in
                 </button>
@@ -42,7 +38,7 @@ export default function MenuIcon() {
               <Link href="/signupModal">
                 <button
                   className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openModal}
+                  onClick={openMenu}
                 >
                   Sign up
                 </button>
