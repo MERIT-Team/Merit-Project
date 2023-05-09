@@ -8,6 +8,7 @@ import { BsApple } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { Dialog } from "@headlessui/react";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
@@ -16,28 +17,24 @@ export default function SigninModal() {
   const [isOpen, setIsOpen] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const submitSignin = () => {
-    console.log("hi");
-    let status = 201;
     axios
       .post("http://localhost:7777/signin", {
         email,
         password,
       })
-      .then(({ data }) => {
-        console.log("data is", data);
-
-        if (status !== data.status) {
-        } else {
-          setTimeout(() => {
-            setIsOpen(false);
-          }, 1000);
-        }
+      .then((data) => {
+        localStorage.setItem("token", data.data.token);
+        toast.success("Login success");
+        router.push({ pathname: "/" });
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 100);
       })
       .catch((err) => {
-        console.log(err);
-        toast.error(err.message);
+        toast.error(err.response.data.message);
       });
   };
 
@@ -131,7 +128,7 @@ export default function SigninModal() {
                           required
                         />
                       </div>
-                      <div>
+                      <div className="my-3">
                         <label
                           htmlFor="password"
                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -150,8 +147,8 @@ export default function SigninModal() {
                           required
                         />
                       </div>
-                      <div className="flex items-start">
-                        <div className="flex items-center my-2 h-5">
+                      <div className="flex">
+                        <div className="flex items-center my-3 h-5">
                           <input
                             id="terms"
                             aria-describedby="terms"
@@ -160,7 +157,7 @@ export default function SigninModal() {
                             required
                           />
                         </div>
-                        <div className="ml-3 my-2 text-sm">
+                        <div className="ml-3 my-3 text-sm d-flex">
                           <label
                             htmlFor="terms"
                             className="font-light text-gray-500 dark:text-gray-300"
@@ -173,6 +170,14 @@ export default function SigninModal() {
                               Terms and Conditions
                             </a>
                           </label>
+                        </div>
+                        <div className="flex items-center ms-40">
+                          <a
+                            href="/"
+                            className="font-lg text-gray-500 dark:text-gray-300"
+                          >
+                            Forget Password?
+                          </a>
                         </div>
                       </div>
                       <button

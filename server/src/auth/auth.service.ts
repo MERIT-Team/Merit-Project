@@ -33,7 +33,6 @@ export class AuthService {
   }
 
   async signin(signinDto: SigninDto) {
-    console.log('ene duudagdlaaa...');
     const { email, password } = signinDto;
     const user = await this.usersService.findOneByEmail(email);
     if (!user)
@@ -43,6 +42,7 @@ export class AuthService {
     console.log(matchingPassword);
     if (!matchingPassword)
       throw new HttpException('Password not matching', HttpStatus.BAD_REQUEST);
+    if (matchingPassword) console.log(matchingPassword);
     const payload = { sub: user };
     const token = this.jwtService.sign(payload);
     return token;

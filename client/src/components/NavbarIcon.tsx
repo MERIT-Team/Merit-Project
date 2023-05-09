@@ -1,5 +1,7 @@
 import { Menu } from "@headlessui/react";
 import MenuIcon from "./MenuItem";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function NavbarIcon() {
   return (
@@ -32,6 +34,7 @@ function NavbarIcon() {
             </Menu.Button>
           </div>
           <MenuIcon />
+          <ToastContainer />
         </Menu>
       </div>
     </>

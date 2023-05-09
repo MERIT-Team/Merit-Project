@@ -21,23 +21,15 @@ export default function SignupModal() {
 
   const router = useRouter();
   const submitSignup = () => {
-    console.log("hi");
-    let status = 201;
     axios
       .post("http://localhost:7777/signup", {
         email,
         password,
         repassword,
       })
-      .then(({ data }) => {
-        console.log("data is", data);
-
-        if (status !== data.status) {
-        } else {
-          setTimeout(() => {
-            setIsOpen(false);
-          }, 1000);
-        }
+      .then((data) => {
+        toast.success("Register success");
+        router.push({ pathname: "/signinModal" });
       })
       .catch((err) => {
         console.log(err);
@@ -101,7 +93,7 @@ export default function SignupModal() {
                     as="h3"
                     className="text-lg text-center font-bold leading-6 text-gray-900"
                   >
-                    Log in or sign up
+                    Sign Up
                   </Dialog.Title>
                   <form
                     onSubmit={(e) => {
@@ -157,7 +149,7 @@ export default function SignupModal() {
                         Confirm password
                       </label>
                       <input
-                        type="confirm-password"
+                        type="password"
                         name="confirm-password"
                         id="confirm-password"
                         placeholder="Repassword"
