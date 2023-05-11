@@ -1,6 +1,5 @@
 import * as nodemailer from 'nodemailer';
 import env from 'src/env';
-
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -9,8 +8,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export const sendEmail = (to: string, subject: string, message: string) =>
-  new Promise((resolve, reject) => {
+export const sendEmail = (to: string, subject: string, message: string) => {
+  console.log('send email:', to, message);
+  return new Promise((resolve, reject) => {
     const mailOptions = {
       from: env.EMAIL_ADDRESS,
       to: to,
@@ -19,9 +19,11 @@ export const sendEmail = (to: string, subject: string, message: string) =>
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
+        console.log('error:', error);
         reject(error.message);
       } else {
         resolve('Email sent: ' + info.response);
       }
     });
   });
+};

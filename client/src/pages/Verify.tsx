@@ -13,28 +13,29 @@ import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
 
-export default function ForgetModal() {
-  const [email, setEmail] = useState("");
+export default function Verify() {
   const [otp, setOtp] = useState("");
   const router = useRouter();
 
-  const Forget = () => {
-    axios
-      .post("http://localhost:7777/otp/signin", {
-        email,
-        otp,
-      })
+  const Verify = async () => {
+    // try {
 
-      .then((data) => {
-        localStorage.setItem("token", data.data.token);
-        toast.success("Message sent");
-      });
-    router
-      .push({ pathname: "/Verify", query: { email } })
-
-      .catch((err) => {
-        toast.error("Email not found");
-      });
+    // }
+    const response = await axios.post(
+      "http://localhost:7777/otp/signin/verify",
+      {
+        otp: Number(otp),
+        email: router.query.email,
+      }
+    );
+    const data = await response.data;
+    // .then((data) => {
+    localStorage.setItem("token", data.token);
+    toast.success("Login Success");
+    // });
+    router.push({ pathname: "/" }).catch((err) => {
+      toast.error("Token not found");
+    });
   };
 
   return (
@@ -74,7 +75,7 @@ export default function ForgetModal() {
                     <form
                       onSubmit={(e) => {
                         e.preventDefault();
-                        Forget();
+                        Verify();
                       }}
                     >
                       <Dialog.Title
@@ -85,15 +86,13 @@ export default function ForgetModal() {
                       </Dialog.Title>
                       <div>
                         <input
-                          value={email}
-                          type="email"
-                          name="email"
-                          id="email"
+                          type="text"
+                          name="otp"
+                          id="otp"
+                          value={otp}
                           className="bg-gray-50 border mb-2 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Email address"
-                          onChange={(e) => {
-                            setEmail(e.target.value);
-                          }}
+                          placeholder="Token"
+                          onChange={(e) => setOtp(e.target.value)}
                           required
                         />
                       </div>

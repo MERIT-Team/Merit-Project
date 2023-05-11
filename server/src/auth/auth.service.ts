@@ -65,7 +65,6 @@ export class AuthService {
         return false;
       });
   }
-
   async verifyOTP(checkOTPDto: CheckOTPDto) {
     const { otp: token, email } = checkOTPDto;
     const otp = await this.otpmodel.findOne({ token });

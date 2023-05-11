@@ -6,7 +6,7 @@ export class CheckOTPDto {
   email: string;
 
   @IsInt()
-  @Min(100000)
+  @Min(1)
   @Max(100000 - 1)
   otp: number;
 }

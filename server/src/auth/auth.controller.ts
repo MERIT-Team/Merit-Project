@@ -4,6 +4,7 @@ import { SignupDto } from './dto/singup.dto';
 import { SigninDto } from './dto/signin.dto';
 import { CreateOTPDto } from './dto/createOTP.dto';
 import { CheckOTPDto } from './dto/checkOTP.dto';
+import { Otp } from './entities/otp.entity';
 
 @Controller()
 export class AuthController {
@@ -16,8 +17,6 @@ export class AuthController {
 
   @Post('/signup')
   signup(@Body() signupDto: SignupDto) {
-    console.log(signupDto);
-
     return this.authService.signup(signupDto);
   }
 
@@ -28,6 +27,7 @@ export class AuthController {
 
   @Post('/otp/signin/verify')
   siginOTPConfirm(@Body() checkOTPDto: CheckOTPDto) {
+    console.log('otp', Otp);
     return this.authService.verifyOTP(checkOTPDto);
   }
 }

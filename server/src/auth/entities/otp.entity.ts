@@ -10,7 +10,10 @@ export class Otp {
   @Prop({ type: String, required: true })
   email: string;
 
-  @Prop({ required: true, default: () => getRandomNumber(100000, 100000 - 1) })
+  @Prop({
+    required: true,
+    default: () => getRandomNumber(100000, 1),
+  })
   token: number;
 
   createdAt: Date;
