@@ -18,9 +18,6 @@ export default function Verify() {
   const router = useRouter();
 
   const Verify = async () => {
-    // try {
-
-    // }
     const response = await axios.post(
       "http://localhost:7777/otp/signin/verify",
       {
@@ -29,13 +26,12 @@ export default function Verify() {
       }
     );
     const data = await response.data;
-    // .then((data) => {
     localStorage.setItem("token", data.token);
     toast.success("Login Success");
-    // });
-    router.push({ pathname: "/" }).catch((err) => {
-      toast.error("Token not found");
-    });
+    router.push({ pathname: "/" });
+    if (otp !== otp) {
+      toast.error("Token not match!!!");
+    }
   };
 
   return (

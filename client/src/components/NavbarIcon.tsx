@@ -1,15 +1,20 @@
 import { Menu } from "@headlessui/react";
 import MenuIcon from "./MenuItem";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
+import { useState } from "react";
 
 function NavbarIcon() {
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <>
       <div className="fixed top-16 w-56 text-right">
         <Menu as="div" className="relative inline-block text-left">
           <div>
-            <Menu.Button className="inline-flex w-full">
+            <Menu.Button
+              className="inline-flex w-full"
+              onClick={() => {
+                setOpenMenu(true);
+              }}
+            >
               <div className="flex justify-between gap-4 rounded-full border p-2 bg-white w-20">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +38,7 @@ function NavbarIcon() {
               </div>
             </Menu.Button>
           </div>
-          <MenuIcon />
-          <ToastContainer />
+          <MenuIcon isOpen={openMenu} setIsOpen={setOpenMenu} />
         </Menu>
       </div>
     </>

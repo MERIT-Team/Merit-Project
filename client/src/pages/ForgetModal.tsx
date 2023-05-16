@@ -32,7 +32,7 @@ export default function ForgetModal() {
     router
       .push({ pathname: "/Verify", query: { email } })
 
-      .catch((err) => {
+      .catch((error) => {
         toast.error("Email not found");
       });
   };

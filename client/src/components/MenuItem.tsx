@@ -1,19 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Link from "next/link";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
+import { useRouter } from "next/router";
 
-export default function MenuIcon() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function MenuIcon({
+  isOpen,
+  setIsOpen,
+}: {
+  isOpen: boolean;
+  setIsOpen: any;
+}) {
+  const { currentUser, setCurrentUser } = useCurrentUser();
+  const router = useRouter();
 
-  function openMenu() {
-    setIsOpen(true);
+  function logout() {
+    localStorage.removeItem("token");
+    setCurrentUser(null);
+    router.push({ pathname: "/" });
+    setIsOpen(false);
   }
 
   return (
     <>
       {" "}
       <Transition
+        show={isOpen}
         as={Fragment}
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
@@ -24,26 +40,40 @@ export default function MenuIcon() {
       >
         <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1 ">
-            <Menu.Item>
-              <Link href="/signinModal">
-                <button
-                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openMenu}
-                >
-                  Log in
-                </button>
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link href="/signupModal">
-                <button
-                  className="group flex w-full items-center rounded-md px-1 py-1 text-md"
-                  onClick={openMenu}
-                >
-                  Sign up
-                </button>
-              </Link>
-            </Menu.Item>
+            {!currentUser ? (
+              <>
+                <Menu.Item>
+                  <Link href="/signinModal">
+                    <button className="group flex w-full items-center rounded-md px-1 py-1 text-md">
+                      Log in
+                    </button>
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link href="/signupModal">
+                    <button className="group flex w-full items-center rounded-md px-1 py-1 text-md">
+                      Sign up
+                    </button>
+                  </Link>
+                </Menu.Item>
+              </>
+            ) : (
+              <>
+                <Menu.Item>
+                  <button className="group flex w-full items-center rounded-md px-1 py-1 text-md">
+                    {currentUser.email}
+                  </button>
+                </Menu.Item>
+                <Menu.Item>
+                  <button
+                    className="group flex w-full items-center rounded-md px-1 py-1 text-md"
+                    onClick={logout}
+                  >
+                    Log out
+                  </button>
+                </Menu.Item>
+              </>
+            )}
           </div>
           <div className="px-1 py-1">
             <Menu.Item>

@@ -25,8 +25,8 @@ export default function SigninModal() {
         email,
         password,
       })
-      .then((data) => {
-        localStorage.setItem("token", data.data.token);
+      .then((res) => {
+        localStorage.setItem("token", res.data);
         toast.success("Login success");
         router.push({ pathname: "/" });
         setTimeout(() => {
@@ -34,7 +34,7 @@ export default function SigninModal() {
         }, 100);
       })
       .catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(err.response.message);
       });
   };
 
