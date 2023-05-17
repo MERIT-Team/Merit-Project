@@ -16,10 +16,10 @@ export default function Heading({
         </div>
         <div className="py-2 ">
           <button
-            className="flex items-center content-center mx-5 border py-1 px-1 rounded-full"
+            className="flex items-center content-center mx-5  py-1 px-1 rounded-full"
             onClick={handleShow}
           >
-            Create <SlPlus />
+            Create <SlPlus className="ml-2" />
           </button>
         </div>
       </div>

@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     colors: { adminNavbarColor: "#f0f0f0" },
+    colors: { modalBgColor: "#fff" },
   },
   plugins: [],
 };

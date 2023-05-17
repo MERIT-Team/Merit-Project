@@ -6,19 +6,34 @@ import { useModal } from "@/Context/ModalContext";
 import { useState } from "react";
 import HotelAdd from "@/components/hotels/HotelAdd";
 import Heading from "@/components/Heading";
-
+import HotelEdit from "@/components/hotels/HotelEdit";
 export default function Document() {
-  const [hotels, setHotel] = useState<any>([]);
   const { setModalContent, setModalTitle, setModalShow } = useModal();
-  const { deleteItem, updateItem, items } = useCrud("hotels");
+  const { deleteItem, updateItem, items, setItems } = useCrud("hotels");
+  const [hotels, setHotel] = useState<any>([]);
 
   const afterSubmit = (hotel: any) => {
-    setHotel([...hotels, hotel]);
+    setItems([...items, hotel]);
+    setModalShow(false);
   };
 
   const showCreateModal = () => {
     setModalTitle("Hotel Add");
     setModalContent(<HotelAdd afterSubmit={afterSubmit} />);
+    setModalShow(true);
+  };
+  const afterEdit = (hotel: any) => {
+    const newHotel = hotels.map((hot: any) => {
+      if (hot.id === hotel.id) {
+        return hotel;
+      }
+      return hot;
+    });
+    setHotel(newHotel);
+  };
+
+  const showEditModal = (hotel: any) => {
+    setModalContent(<HotelEdit hotels={hotel} afterEdit={afterEdit} />);
     setModalShow(true);
   };
 
@@ -76,7 +91,7 @@ export default function Document() {
                         <BsFillPencilFill
                           className="text-lg"
                           onClick={() => {
-                            updateItem(item.id);
+                            showEditModal;
                           }}
                         />
                       </button>

@@ -4,6 +4,6 @@ import { HotelCommentsController } from './hotel-comments.controller';
 
 @Module({
   controllers: [HotelCommentsController],
-  providers: [HotelCommentsService]
+  providers: [HotelCommentsService],
 })
 export class HotelCommentsModule {}

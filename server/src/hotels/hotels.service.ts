@@ -16,9 +16,8 @@ export class HotelsService {
   ) {}
 
   async create(createHotelDto: CreateHotelDto) {
-    console.log('createHotelDto', createHotelDto);
-    const hotelsCard = await this.hotelCardModel.create(createHotelDto);
-    return hotelsCard;
+    const hotel = await new this.hotelCardModel(createHotelDto).save();
+    return hotel;
   }
 
   async findAll() {
