@@ -4,39 +4,6 @@ function Footer() {
   return (
     <>
       <footer>
-        <div className="footer-head grid font-light md:grid-cols-12  sm:grid-flow-row border-b">
-          <div className="xl:col-span-6 sm:col-span-12 xs:col-span-12">
-            <h3 className="font-bold">Support</h3>
-            <ul>
-              <li>
-                <a href="/">Help Center</a>
-              </li>
-              <li>
-                <a href="/">AirCover </a>
-              </li>
-              <li>
-                <a href="/">Cancellation options</a>
-              </li>
-              <li>
-                <a href="/">Our COVID-19 Response </a>
-              </li>
-            </ul>
-          </div>
-          <div className="xl:col-span-6 sm:col-span-12 xs:col-span-12">
-            <h3 className="font-bold xl:p-0 md:py-5 sm:pt-10 max-sm:pt-10">
-              About MERIT
-            </h3>
-            <ul>
-              <li>
-                <a href="/">Learn about new features</a>
-              </li>
-              <li>
-                <a href="/">Letter from our founders</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
         <div className="footer-bottom md:flex md:flex-row sm:flex-col md:justify-between sm:items-center">
           <div className="flex flex-row gap-5 mt-1">
             <span>© 2023 MERIT, Inc.</span>
