@@ -13,7 +13,6 @@ export default function Document() {
   const [hotels, setHotel] = useState<any>([]);
 
   const afterSubmit = (hotel: any) => {
-    setItems([...items, hotel]);
     setModalShow(false);
   };
 
