@@ -7,6 +7,7 @@ import { Fragment, useState } from "react";
 import Link from "next/link";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export default function MenuIcon({
   isOpen,
@@ -17,11 +18,11 @@ export default function MenuIcon({
 }) {
   const { currentUser, setCurrentUser } = useCurrentUser();
   const router = useRouter();
-
   function logout() {
     localStorage.removeItem("token");
-    setCurrentUser(null);
+    setCurrentUser(undefined);
     router.push({ pathname: "/" });
+    toast.warning("Log out");
     setIsOpen(false);
   }
 

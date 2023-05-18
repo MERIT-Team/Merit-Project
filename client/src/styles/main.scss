@@ -31,7 +31,6 @@ html {
 }
 
 .btn {
-  margin: 10px 0;
   padding: 10px;
   color: white;
   background-color: #e98074;
@@ -51,4 +50,133 @@ html {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+body {
+  background-color: #e9e9e9;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 1px;
+}
+
+* {
+  box-sizing: border-box;
+  transition: 0.25s all ease;
+}
+
+:root {
+  --baseColor: #606468;
+}
+
+.align {
+  display: grid;
+  place-items: center;
+}
+
+.grid {
+  inline-size: 90%;
+  margin-inline: auto;
+  max-inline-size: 20rem;
+}
+
+/* helpers/hidden.css */
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* helpers/icon.css */
+
+:root {
+  --iconFill: var(--baseColor);
+}
+
+.icons {
+  display: none;
+}
+
+.icon {
+  block-size: 1em;
+  display: inline-block;
+  fill: var(--iconFill);
+  inline-size: 1em;
+  vertical-align: middle;
+}
+
+/* layout/base.css */
+
+:root {
+  --htmlFontSize: 100%;
+
+  --bodyBackgroundColor: #2c3338;
+  --bodyColor: var(--baseColor);
+  --bodyFontFamily: "Open Sans";
+  --bodyFontFamilyFallback: sans-serif;
+  --bodyFontSize: 0.875rem;
+  --bodyFontWeight: 400;
+  --bodyLineHeight: 1.5;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: var(--htmlFontSize);
+}
+
+body {
+  background-color: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
+  font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+  font-size: var(--bodyFontSize);
+  font-weight: var(--bodyFontWeight);
+  line-height: var(--bodyLineHeight);
+  margin: 0;
+  min-block-size: 100vh;
+}
+
+/* modules/text.css */
+
+p {
+  margin-block: 1.5rem;
+}
+
+.text--center {
+  text-align: center;
+}
+
+label {
+  margin: 10px 0;
+}
+
+input {
+  width: 350px;
+  height: 40px;
+  margin: 4px 0;
+
+  padding-left: 25px;
+  font-size: 13px;
+  letter-spacing: 0.15px;
+  border: none;
+  outline: none;
+
+  font-family: "Montserrat", sans-serif;
+  transition: 0.25s ease;
+  border-radius: 8px;
+
+  box-shadow: inset 2px 2px 4px, inset -2px -2px 4px white;
+
+  &:focus {
+    box-shadow: inset 4px 4px 4px, inset -4px -4px 4px white;
+  }
 }

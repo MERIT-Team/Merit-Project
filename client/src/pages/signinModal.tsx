@@ -186,49 +186,6 @@ export default function SigninModal() {
                       >
                         Continue
                       </button>
-                      <div className="end">
-                        <div className="grid grid-cols-5">
-                          <div className="line col-span-2">
-                            <hr />
-                          </div>
-                          <div className="col-span-1 text-center">or</div>
-                          <div className="line col-span-2">
-                            <hr />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bottom">
-                        <button className="w-full border btn-bottom rounded-lg border-black">
-                          <a href="http://facebook.com">
-                            {" "}
-                            <div className="flex justify-between">
-                              <div>
-                                <AiOutlineFacebook />
-                              </div>
-                              <div>Continue with facebook</div>
-                              <div>{""}</div>
-                            </div>
-                          </a>
-                        </button>
-                        <button className="w-full border btn-bottom rounded-lg border-black">
-                          <div className="flex justify-between">
-                            <div>
-                              <FcGoogle />
-                            </div>
-                            <div>Continue with Google</div>
-                            <div>{""}</div>
-                          </div>
-                        </button>
-                        <button className="w-full border btn-bottom rounded-lg border-black">
-                          <div className="flex justify-between">
-                            <div>
-                              <BsApple />
-                            </div>
-                            <div>Continue with Apple</div>
-                            <div>{""}</div>
-                          </div>
-                        </button>
-                      </div>
                     </form>
                   </Dialog.Panel>
                 </Transition.Child>

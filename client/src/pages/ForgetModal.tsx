@@ -29,12 +29,9 @@ export default function ForgetModal() {
         localStorage.setItem("token", data.data.token);
         toast.success("Message sent");
       });
-    router
-      .push({ pathname: "/Verify", query: { email } })
-
-      .catch((error) => {
-        toast.error("Email not found");
-      });
+    router.push({ pathname: "/Verify", query: { email } }).catch((err) => {
+      toast.error("Email not found");
+    });
   };
 
   return (
@@ -79,7 +76,7 @@ export default function ForgetModal() {
                     >
                       <Dialog.Title
                         as="h3"
-                        className="text-lg font-bold leading-6 text-gray-900 mb-4"
+                        className="text-lg font-bold leading-6 text-gray-900 mb-5 "
                       >
                         Find your account
                       </Dialog.Title>
@@ -103,49 +100,6 @@ export default function ForgetModal() {
                       >
                         Continue
                       </button>
-                      <div className="end">
-                        <div className="grid grid-cols-5">
-                          <div className="line col-span-2">
-                            <hr />
-                          </div>
-                          <div className="col-span-1 text-center">or</div>
-                          <div className="line col-span-2">
-                            <hr />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="bottom">
-                        <button className="w-full border btn-bottom rounded-lg border-black">
-                          <a href="http://facebook.com">
-                            {" "}
-                            <div className="flex justify-between">
-                              <div>
-                                <AiOutlineFacebook />
-                              </div>
-                              <div>Continue with facebook</div>
-                              <div>{""}</div>
-                            </div>
-                          </a>
-                        </button>
-                        <button className="w-full border btn-bottom rounded-lg border-black">
-                          <div className="flex justify-between">
-                            <div>
-                              <FcGoogle />
-                            </div>
-                            <div>Continue with Google</div>
-                            <div>{""}</div>
-                          </div>
-                        </button>
-                        <button className="w-full border btn-bottom rounded-lg border-black">
-                          <div className="flex justify-between">
-                            <div>
-                              <BsApple />
-                            </div>
-                            <div>Continue with Apple</div>
-                            <div>{""}</div>
-                          </div>
-                        </button>
-                      </div>
                     </form>
                   </Dialog.Panel>
                 </Transition.Child>
