@@ -27,8 +27,8 @@ export class Hotel {
   @Prop({ type: mongoose.Schema.Types.ObjectId })
   UserRating: mongoose.Schema.Types.ObjectId;
 
-  @Prop({ type: [String] })
-  images: string[];
+  @Prop({ type: String, required: true })
+  images: string;
 
   @Prop({ type: Object })
   thingsToKnow: {

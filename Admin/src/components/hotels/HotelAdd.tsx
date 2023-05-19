@@ -26,7 +26,7 @@ const Loading = () => {
 };
 
 export default function HotelAdd({ afterSubmit }: { afterSubmit: any }) {
-  const [img, setImg] = useState("");
+  const [images, setImages] = useState("");
   const [loading, setLoading] = useState(false);
   const { createItem } = useCrud("hotels");
 
@@ -38,22 +38,24 @@ export default function HotelAdd({ afterSubmit }: { afterSubmit: any }) {
     afterSubmit(formDataObject);
   };
 
-  const uploadImg = (e) => {
+  const uploadImg = (e: any) => {
     setLoading(true);
     const fd = new FormData();
-    fd.append("image", e.target.files[0]);
+    fd.append("files", e.target.files[0]);
     axios
-      .post("http://localhost:8080/files", fd, {
+      .post("http://localhost:8000/files", fd, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "multipart/x-form-data",
         },
       })
       .then((res) => {
-        setImg(res.data.secure_url);
+        setImages(res.data[0].secure_url);
+
         setLoading(false);
       });
   };
 
+  console.log(images);
   return (
     <form onSubmit={handleSubmit}>
       <div
@@ -74,7 +76,7 @@ export default function HotelAdd({ afterSubmit }: { afterSubmit: any }) {
             height: "100%",
             objectFit: "cover",
           }}
-          src={img}
+          src={images}
           alt=""
           onError={({ currentTarget }) => {
             currentTarget.onerror = null; // prevents looping
@@ -84,6 +86,7 @@ export default function HotelAdd({ afterSubmit }: { afterSubmit: any }) {
         />
         <input
           type="file"
+          name="images"
           onChange={uploadImg}
           style={{
             position: "absolute",
