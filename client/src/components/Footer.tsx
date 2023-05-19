@@ -32,7 +32,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="font-bold flex  flex-row gap-10 mt-10">
+          <div className="font-bold flex flex-row gap-10 ">
             <div>
               <button className="flex mt-1">
                 <RiGlobalLine className="mt-1 me-2" />
